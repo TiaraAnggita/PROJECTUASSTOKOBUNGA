@@ -69,6 +69,14 @@
               <li><a href="about.php">About</a></li>
               <li><a href="product.php">Produk</a></li>
               <li><a href="contact.php">Contact</a></li>
+              <li class="login-menu">
+                <a href="login.php" title="Login / Akun">
+                  <i class="bi bi-person-circle" style="color: #feb900; font-size: 1.3rem;"></i>
+                </a>
+              </li>
+
+              <li class="search-menu">...</li>
+              <li class="cart-menu">...</li>
               <li class="search-menu">
                 <a href="javascript:void(0)" id="search-btn">
                   <i class="bi bi-search" style="color: #feb900; font-weight: bold;"></i>
@@ -116,7 +124,7 @@
           id="hero-carousel"
           class="carousel slide"
           data-bs-ride="carousel"
-          data-bs-interval="900"
+          data-bs-interval="5000"
         >
           <div class="carousel-item">
             <img src="assets/img/hero-carousel/bg liy.jpg" alt="" />
