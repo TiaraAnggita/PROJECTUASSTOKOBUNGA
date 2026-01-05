@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Tour De Flores</title>
+  <title>Evergreen</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -42,20 +42,18 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Tour De Flores</h1> <span>.</span>
+        <h1 class="sitename">Evergreen</h1> <span>.</span>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="services.html">Aktivitas Wisata</a></li>
-          <li><a href="projects.html">Pariwisata</a></li>
-          <li><a href="blog.html">Penginapan</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="about.php" class="active">About</a></li>
+          <li><a href="product.php">Produk</a></li>
+          <li><a href="contact.php">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -88,20 +86,10 @@
           <div class="col-lg-7 about-img" data-aos="zoom-out" data-aos-delay="200"><img src="assets/img/about1.jpg"></div>
 
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="inner-title">TOUR DE FLORES</h2>
+            <h2 class="inner-title">Evergreen</h2>
             <div class="our-story">
               <h3>Our Story</h3>
-              <p>"Tour De Flores, sebuah webside yang memperkenalkan keindahan alam di Flores Nusa Tenggara Timur dan merecomendasikan tempat wisata dan hotel yang tak terlupakan. Dengan keindahan alam yang luar biasa, seperti Taman Nasional Komodo dan Danau Kelimutu, serta kekayaan budaya yang unik, Flores menjadi destinasi wisata yang sempurna untuk petualangan dan penemuan. Dari Wae Rebo hingga Labuan Bajo, setiap sudut Flores memiliki cerita dan keindahan yang menunggu untuk ditemukan. Mari jelajahi Flores dan temukan keajaiban alam dan budayanya yang luar biasa!"</p>
-              <ul>
-                <li><i class="bi bi-check-circle"></i> <span>Memperkenalkan tempat wisata</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Merekomendasikan penginapan</span></li>
-              </ul>
-              <p>Berikut merupakan vidio pendek dari Flores Nusa Tenggara Timur</p>
-              <div class="watch-video d-flex align-items-center position-relative">
-                <i class="bi bi-play-circle"></i>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/epYFaLy6_r8?si=XZAJ2N_5RNUKVN27" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-              </div>
-
+              <p>"Evergreen adalah platform layanan floral digital yang didedikasikan untuk mengubah setiap momen spesial menjadi kenangan abadi. Kami percaya bahwa bunga adalah bahasa universal untuk cinta, apresiasi, dan simpati. Melalui sentuhan modern, kami menghadirkan kemudahan memesan bunga berkualitas tinggi secara online. Membantu Anda menyampaikan perasaan yang sulit diungkapkan melalui kata-kata dengan rangkaian bunga segar yang dirancang secara artistik dan dikirimkan dengan penuh ketulusan.Kami percaya bahwa keindahan alam harus bisa diakses oleh siapa saja, di mana saja, secara instan.Evergreen lahir dari perpaduan antara seni botani dan kenyamanan teknologi. Kami tidak hanya membuat buket; kami menciptakan pengalaman digital untuk merayakan momen hidup Anda.</p>
             </div>
           </div>
 
@@ -133,8 +121,8 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Yuliana Florensa Lama Gali</h4>
-              <span>Mahasiswa IT semester 2</span>
+              <h4>Maria Sindriani Wea Liu</h4>
+              <span>Mahasiswa IT semester 3</span>
               <p>Mahasiswa IDB Bali angkatan 2024 Program study Sistem Teknologi Informasi Dan Bisnis</p>
             </div>
           </div><!-- End Team Member -->
@@ -150,7 +138,7 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Maria Sindriani Wea Liu</h4>
+              <h4>Tiara Angita Baso</h4>
               <span>Mahasiswa IT semester 2</span>
               <p>Mahasiswa IDB Bali angkatan 2024 Program study Sistem Teknologi Informasi Dan Bisnis</p>
             </div>

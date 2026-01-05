@@ -41,6 +41,7 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
+    
 
     <!-- =======================================================
   * Template Name: UpConstruction
@@ -56,23 +57,33 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
       <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="index.php" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Evergreen</h1> <span>.</span>
         </a>
 
         <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Produk</a></li>
-            <li><a href="contact.html">Contact</a></li>
-           </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-        
-      </div>
+            <ul>
+              <li><a href="index.php" class="active">Home</a></li>
+              <li><a href="about.php">About</a></li>
+              <li><a href="product.php">Produk</a></li>
+              <li><a href="contact.php">Contact</a></li>
+              <li class="search-menu">
+                <a href="javascript:void(0)" id="search-btn">
+                  <i class="bi bi-search" style="color: #feb900; font-weight: bold;"></i>
+                </a>
+              </li>
+              <li class="cart-menu">
+                <a href="javascript:void(0)" id="cart-btn" style="position: relative; display: flex; align-items: center; padding: 10px 15px;">
+                <i class="bi bi-cart-fill" style="color: #feb900; font-weight: bold; font-size: 1.2rem;"></i>
+                 <span id="cart-count" class="badge rounded-pill bg-danger" style="position: absolute; top: 0; right: 0; font-size: 0.7rem;">0</span>
+                </a>
+              </li>
+            </ul>
+                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+         </nav>
+        </div>
     </header>
 
     <main class="main">
@@ -105,7 +116,7 @@
           id="hero-carousel"
           class="carousel slide"
           data-bs-ride="carousel"
-          data-bs-interval="1000"
+          data-bs-interval="900"
         >
           <div class="carousel-item">
             <img src="assets/img/hero-carousel/bg liy.jpg" alt="" />
@@ -999,6 +1010,7 @@
         </div>
       </section>
       <!-- /Projects Section -->
+       
 
       <!-- Testimonials Section -->
       <section id="testimonials" class="testimonials section">
@@ -1270,5 +1282,131 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+          <div id="search-overlay" class="search-overlay">
+        <span class="close-search" id="close-search">&times;</span>
+        <div class="search-content">
+          <input type="text" id="nav-search-input" placeholder="Cari bunga Evergreen...">
+          <div class="search-line"></div>
+        </div>
+      </div>
+
+        <style>
+          .search-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+          }
+          .search-content {
+            width: 60%;
+            text-align: center;
+          }
+          #nav-search-input {
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid #feb900;
+            color: white;
+            font-size: 2rem;
+            width: 100%;
+            outline: none;
+            padding: 10px;
+          }
+          .close-search {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #feb900;
+            font-size: 3rem;
+            cursor: pointer;
+          }
+          /* Membuat ikon search di menu sejajar dengan teks */
+          .search-menu a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+          }
+        </style>
+
+        <script>
+      const searchBtn = document.getElementById('search-btn');
+      const searchOverlay = document.getElementById('search-overlay');
+      const closeSearch = document.getElementById('close-search');
+      const navSearchInput = document.getElementById('nav-search-input');
+
+      // 1. Fungsi Buka & Tutup Overlay
+      searchBtn.addEventListener('click', function() {
+        searchOverlay.style.display = 'flex';
+        navSearchInput.focus();
+      });
+
+      closeSearch.addEventListener('click', function() {
+        searchOverlay.style.display = 'none';
+      });
+
+      // 2. Fungsi Filter Produk (Logic Search)
+      navSearchInput.addEventListener('keyup', function() {
+        const searchText = navSearchInput.value.toLowerCase();
+        
+        // Inisialisasi Isotope
+        const grid = document.querySelector('.isotope-container');
+        const iso = new Isotope(grid, {
+          itemSelector: '.portfolio-item',
+          layoutMode: 'masonry'
+        });
+
+        // Menjalankan filter Isotope
+        iso.arrange({
+          filter: function(itemElem) {
+            // Mengambil teks judul (h4) dan deskripsi (p) pada setiap produk
+            const name = itemElem.querySelector('h4').textContent.toLowerCase();
+            const info = itemElem.querySelector('p').textContent.toLowerCase();
+            
+            return name.includes(searchText) || info.includes(searchText);
+          }
+        });
+
+        // Otomatis menutup overlay jika user menekan 'Enter' (Opsional)
+        navSearchInput.onkeypress = function(e) {
+          if (e.keyCode === 13) {
+            searchOverlay.style.display = 'none';
+            // Scroll otomatis ke bagian produk agar user melihat hasilnya
+            document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
+          }
+        };
+      });
+</script>
+          <div id="cart-sidebar" class="cart-sidebar">
+          <div class="cart-header">
+            <h4>Keranjang Evergreen</h4>
+            <span id="close-cart" class="close-cart">&times;</span>
+          </div>
+          
+          <div id="cart-content-area">
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="cart-footer">
+              <div class="d-flex justify-content-between mb-3">
+                <strong>Total:</strong>
+                <span id="cart-total">Rp 0</span>
+              </div>
+              <button id="go-to-checkout" class="btn btn-warning w-100">Lanjut ke Pembayaran</button>
+            </div>
+          </div>
+
+          <div id="checkout-area" style="display: none; padding: 20px;">
+            <h5>Data Pengiriman</h5>
+            <form id="form-checkout-final">
+              <input type="text" id="cust-name" class="form-control mb-2" placeholder="Nama Lengkap" required>
+              <textarea id="cust-address" class="form-control mb-2" placeholder="Alamat Lengkap" required></textarea>
+              <button type="submit" class="btn btn-success w-100">Konfirmasi & Bayar Sekarang</button>
+              <button type="button" id="back-to-cart" class="btn btn-link w-100 text-muted">Kembali</button>
+            </form>
+          </div>
+        </div>
   </body>
 </html>

@@ -880,7 +880,7 @@ section,
   background-color: color-mix(
     in srgb,
     var(--background-color),
-    transparent 30%
+    transparent 80%
   );
   position: absolute;
   inset: 0;
@@ -2890,4 +2890,92 @@ section,
 
 .services .service-item:hover .icon:before {
   background: transparent;
+}
+
+/* --- Fitur Keranjang Evergreen --- */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  height: 100%;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  z-index: 10001;
+  transition: 0.4s;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-sidebar.active {
+  right: 0;
+}
+
+.cart-header {
+  padding: 20px;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-header h4 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.close-cart {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #feb900;
+}
+
+.cart-items-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  color: #333;
+}
+
+.cart-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  background: #fff;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.cart-item-info h6 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.cart-item-info p {
+  margin: 0;
+  color: #feb900;
+  font-weight: bold;
+}
+
+.remove-item {
+  margin-left: auto;
+  color: #ff4d4d;
+  cursor: pointer;
+  font-size: 1.2rem;
 }

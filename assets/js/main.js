@@ -167,3 +167,125 @@
   new PureCounter();
 
 })();
+
+// Gunakan window.cart agar variabel ini bisa diakses oleh fungsi checkout() di luar scope
+window.cart = []; 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cartBtn = document.getElementById('cart-btn');
+  const cartSidebar = document.getElementById('cart-sidebar');
+  const closeCart = document.getElementById('close-cart');
+  const cartItemsContainer = document.getElementById('cart-items');
+  const cartCount = document.getElementById('cart-count');
+  const cartTotal = document.getElementById('cart-total');
+
+  // Buka Keranjang
+  if (cartBtn) {
+    cartBtn.addEventListener('click', () => cartSidebar.classList.add('active'));
+  }
+
+  // Tutup Keranjang
+  if (closeCart) {
+    closeCart.addEventListener('click', () => cartSidebar.classList.remove('active'));
+  }
+
+  // Tambah ke Keranjang
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('add-to-cart')) {
+      const btn = e.target;
+      const name = btn.getAttribute('data-name');
+      const price = parseInt(btn.getAttribute('data-price'));
+      const img = btn.getAttribute('data-img');
+      
+      window.cart.push({ name, price, img });
+      updateCartUI();
+      
+      btn.innerText = "Ditambahkan!";
+      setTimeout(() => { btn.innerText = "+ Keranjang"; }, 1000);
+    }
+  });
+
+  function updateCartUI() {
+    if (cartCount) cartCount.innerText = window.cart.length;
+    if (!cartItemsContainer) return;
+
+    cartItemsContainer.innerHTML = '';
+    
+    if (window.cart.length === 0) {
+      cartItemsContainer.innerHTML = '<p class="text-center mt-5 text-muted">Keranjang masih kosong.</p>';
+      cartTotal.innerText = 'Rp 0';
+      return;
+    }
+
+    let total = 0;
+    window.cart.forEach((item, index) => {
+      total += item.price;
+      cartItemsContainer.innerHTML += `
+        <div class="cart-item">
+          <img src="${item.img}">
+          <div class="cart-item-info">
+            <h6>${item.name}</h6>
+            <p>Rp ${item.price.toLocaleString('id-ID')}</p>
+          </div>
+          <i class="bi bi-trash remove-item" data-index="${index}" style="cursor:pointer; color:red; margin-left:auto;"></i>
+        </div>
+      `;
+    });
+    cartTotal.innerText = `Rp ${total.toLocaleString('id-ID')}`;
+  }
+
+  // Hapus Item
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('remove-item')) {
+      const index = e.target.getAttribute('data-index');
+      window.cart.splice(index, 1);
+      updateCartUI();
+    }
+  });
+});
+
+/**
+ * FUNGSI CHECKOUT LANGSUNG KE DATABASE (PHP)
+ */
+async function checkout() {
+  const totalText = document.getElementById('cart-total').innerText;
+  if (totalText === "Rp 0") return alert("Keranjang belanja Anda masih kosong!");
+
+  // Ambil data pelanggan melalui prompt (lebih cepat untuk testing)
+  const nama = prompt("Masukkan Nama Lengkap:");
+  if (!nama) return;
+  const alamat = prompt("Masukkan Alamat Pengiriman:");
+  if (!alamat) return;
+
+  // Konversi total ke angka saja
+  const totalHarga = parseInt(totalText.replace(/[^0-9]/g, ''));
+
+  // Siapkan data yang akan dikirim ke proses_checkout.php
+  const dataPesanan = {
+    nama: nama,
+    alamat: alamat,
+    total: totalHarga,
+    items: window.cart // Mengirim array barang
+  };
+
+  try {
+    const response = await fetch('proses_checkout.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataPesanan)
+    });
+
+    const hasil = await response.json();
+
+    if (hasil.success) {
+      alert("Pesanan Berhasil! Terima kasih telah belanja di Evergreen.");
+      window.cart = []; // Kosongkan variabel keranjang
+      location.reload(); // Refresh halaman
+    } else {
+      alert("Gagal: " + hasil.message);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Koneksi gagal! Pastikan server PHP Anda (XAMPP) menyala.");
+  }
+}

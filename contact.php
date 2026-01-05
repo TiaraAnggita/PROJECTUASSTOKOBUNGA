@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Tour De Flores</title>
+    <title>Evergreen</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
@@ -56,7 +56,7 @@
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
       >
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="index.php" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Tour De Flores</h1>
@@ -65,12 +65,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Aktivitas Wisata</a></li>
-            <li><a href="projects.html">Pariwisata</a></li>
-            <li><a href="blog.html">Penginapan</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="index.phpl">Home</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="product.php">Product</a></li>
+             <li><a href="contact.php" class="active">Contact</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -107,7 +105,7 @@
               >
                 <i class="bi bi-geo-alt"></i>
                 <h3>Address</h3>
-                <p>Flores Nusa Tenggara Timur, Indonesia</p>
+                <p>Bali Denapasar, Indonesia</p>
               </div>
             </div>
             <!-- End Info Item -->
@@ -133,7 +131,7 @@
               >
                 <i class="bi bi-envelope"></i>
                 <h3>Email Us</h3>
-                <p>TourDeFlores@gmail.com</p>
+                <p>Evergreen@gmail.com</p>
               </div>
             </div>
             <!-- End Info Item -->
@@ -216,7 +214,7 @@
         <div class="row gy-4">
           <div class="col-lg-4 col-md-6 footer-about">
             <a href="index.html" class="logo d-flex align-items-center">
-              <span class="sitename">Tour De Flores</span>
+              <span class="sitename">Evergreen</span>
             </a>
             <div class="footer-contact pt-3">
               <p>Flores Nusa Tenggara Timur, Indonesia</p>
